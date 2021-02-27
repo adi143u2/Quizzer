@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="studentDetails")
-public class Student {
+ @Table(name="student") 
+public class student {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Student {
 	
 	
 	
-	public Student() {
+	public student() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -45,7 +45,7 @@ public class Student {
 	}
 
 
-	public Student(int stud_id, int stud_rollno, String stud_fname, String stud_lname,String stud_email,String stud_mobile, String stud_password,
+	public student(int stud_id, int stud_rollno, String stud_fname, String stud_lname,String stud_email,String stud_mobile, String stud_password,
 			boolean is_active) {
 		super();
 		this.stud_id = stud_id;
@@ -59,7 +59,7 @@ public class Student {
 	}
 	
 	
-	public Student(int stud_rollno, String stud_fname, String stud_lname,String stud_email, String stud_mobile, String stud_password, boolean is_active) {
+	public student(int stud_rollno, String stud_fname, String stud_lname,String stud_email, String stud_mobile, String stud_password, boolean is_active) {
 		super();
 		this.stud_rollno = stud_rollno;
 		this.stud_fname = stud_fname;

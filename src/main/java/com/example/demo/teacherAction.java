@@ -45,4 +45,18 @@ public class teacherAction {
 		mv.setViewName("teacher_register");
 		return mv;
 	}
+	
+	
+	
+	
+	@GetMapping("/teacherLogin")
+	public Teacher TeacherLogin(String teacher_email, String teacher_password)
+	{
+		
+		Teacher obj = TeacherUserRepository.findByUsernameAndPassword(teacher_email, teacher_password);
+		
+		return obj;
+	}
+	
+	
 }

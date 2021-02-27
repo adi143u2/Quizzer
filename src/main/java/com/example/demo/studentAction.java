@@ -33,26 +33,27 @@ public class studentAction {
 	 * return "Get Method Student Registration  Successfull"; }
 	 */
 
-	@PostMapping("/studregister1")
-	public String REG(String stud_fname, String stud_lname, String stud_email, String stud_mobile, String stud_pass) {
-		Random rand = new Random();
-		int randomNo = rand.nextInt(1000);
-		String RANDOM = String.valueOf(randomNo);
-
-		Student student = new Student(randomNo, stud_fname, stud_lname, stud_email, stud_mobile, stud_pass, true);
-
-		StudentUserRepository.save(student);
-
-		return " Student Registration Successfull";
-	}
+	/*
+	 * @PostMapping("/studregister1") public String REG(String stud_fname, String
+	 * stud_lname, String stud_email, String stud_mobile, String stud_pass) { Random
+	 * rand = new Random(); int randomNo = rand.nextInt(1000); String RANDOM =
+	 * String.valueOf(randomNo);
+	 * 
+	 * Student student = new Student(randomNo, stud_fname, stud_lname, stud_email,
+	 * stud_mobile, stud_pass, true);
+	 * 
+	 * StudentUserRepository.save(student);
+	 * 
+	 * return " Student Registration Successfull"; }
+	 */
 
 	@RequestMapping(value = "/studregister2", method = RequestMethod.POST)
-	public String REGISTER(Student student) {
+	public String REGISTER(student student) {
 		Random rand = new Random();
 		int randomNo = rand.nextInt(1000);
 		String RANDOM = String.valueOf(randomNo);
 
-		Student st = new Student(randomNo, student.getStud_fname(), student.getStud_lname(), student.getStud_email(),
+		student st = new student(randomNo, student.getStud_fname(), student.getStud_lname(), student.getStud_email(),
 				student.getStud_mobile(), student.getStud_password(), true);
 
 		StudentUserRepository.save(st);
@@ -74,24 +75,38 @@ public class studentAction {
 		return mv;
 	}
 
+	@GetMapping("/{stud_rollno}")
+	public student getStudent(@PathVariable int stud_rollno) {
+		return StudentUserRepository.findById(stud_rollno).get();
+	}
+
+	/*
+	 * @PostMapping("/stud_details")
+	 * 
+	 * @Query("select stud_fname from Student where stud_rollno=:stud_rollno AND stud_password=:stud_password"
+	 * ) public ModelAndView afetrLogin(int stud_rollno, String stud_password) {
+	 * 
+	 * ModelAndView mv = new ModelAndView(); return mv; }
+	 */
+
 	
-	  @GetMapping("/{stud_rollno}") public Student getStudent(@PathVariable int
-	  stud_rollno) { return StudentUserRepository.findById(stud_rollno).get(); }
+	// Running Please Uncomment (YAAD RAKHIYO)
+	  @GetMapping("/studentLogin") public student StudentLogin(int stud_rollno,
+	  String stud_password) { 
+	
+		  student obj= StudentUserRepository.findByRollnoAndPassword(stud_rollno,
+	  stud_password); return obj; }
 	 
 
-		/*
-		 * @PostMapping("/stud_details")
-		 * 
-		 * @Query("select stud_fname from Student where stud_rollno=:stud_rollno AND stud_password=:stud_password"
-		 * ) public ModelAndView afetrLogin(int stud_rollno, String stud_password) {
-		 * 
-		 * ModelAndView mv = new ModelAndView(); return mv; }
-		 */
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+	/*
+	 * @GetMapping("/student_LoginbyId") public student StudentloginByRollno(int
+	 * stud_rollno, String stud_password) {
+	 * 
+	 * student obj1 =
+	 * StudentUserRepository.findBystud_rollnoAndPassword(stud_rollno,
+	 * stud_password); return obj1;
+	 * 
+	 * }
+	 */
+
 }
