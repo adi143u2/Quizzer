@@ -1,4 +1,4 @@
-package com.example.demo;
+package model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +16,7 @@ public class Teacher {
 	private int teacher_id;
 	private String teacher_fname;
 	private String teacher_lname;
+	private String teacher_username;
 	private String teacher_email;
 	private String teacher_password;
 	private boolean is_active;
@@ -33,11 +34,12 @@ public class Teacher {
 	}
 	
 	
-	public Teacher(String teacher_fname, String teacher_lname, String teacher_email, String teacher_password,
+	public Teacher(String teacher_fname, String teacher_lname,String teacher_username, String teacher_email, String teacher_password,
 			boolean is_active) {
 		super();
 		this.teacher_fname = teacher_fname;
 		this.teacher_lname = teacher_lname;
+		this.teacher_username  = teacher_username;
 		this.teacher_email = teacher_email;
 		this.teacher_password = teacher_password;
 		this.is_active = is_active;
@@ -45,12 +47,13 @@ public class Teacher {
 	
 	
 	
-	public Teacher(int teacher_id, String teacher_fname, String teacher_lname, String teacher_email,
+	public Teacher(int teacher_id, String teacher_fname, String teacher_lname,String teacher_username, String teacher_email,
 			String teacher_password, boolean is_active) {
 		super();
 		this.teacher_id = teacher_id;
 		this.teacher_fname = teacher_fname;
 		this.teacher_lname = teacher_lname;
+		this.teacher_username  = teacher_username;
 		this.teacher_email = teacher_email;
 		this.teacher_password = teacher_password;
 		this.is_active = is_active;
@@ -58,6 +61,16 @@ public class Teacher {
 	
 	
 	
+	public String getTeacher_username() {
+		return teacher_username;
+	}
+
+
+	public void setTeacher_username(String teacher_username) {
+		this.teacher_username = teacher_username;
+	}
+
+
 	public int getTeacher_id() {
 		return teacher_id;
 	}
